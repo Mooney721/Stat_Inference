@@ -17,30 +17,21 @@ knitr::opts_chunk$set(echo = TRUE)
 
 #### **Analysis**
 
-As noted above, of particular interest is the analysis of whether automatic or manual transmission is better for fuel performance in MPG. From the analysis of transmission type on fuel performance, it is clear that manual transmission has higher fuel performance than automatic transmission (see **Chart 1** of **Appendix**). Note that while manual transmission is shown to, on average, have higher fuel performance, manual transmission also appears to be much more variable than automatic transmission.
-
-Then, based on this model, an estimated regression model may be fit on the fuel performance based on manual transmission, as shown below:
-$$(1)~~~Y = \beta_0 + \beta_1Transmission$$  
+$$(1)~~~Y = \beta_0 + \beta_1X$$  
 
 Where: 
-$$Transmission = \{1~~~if~~~manual;~~~0~~~if~~~automatic$$
+$$X = \{1~~~if~~~m;~~~0~~~if~~~a$$
 
 
 #### **Conclusion**
 
 #### **Appendix: Charts and Figures**
 
-##### **Chart 1: Fuel Perfomance by Transmission Type**
+##### **Chart 1**
 ```{r fig.align = 'center', echo = FALSE}
-suppressWarnings(library(ggplot2))
-mtcars$am <- factor(mtcars$am,levels = c(0,1),
-                    labels = c("Automatic","Manual")) 
-qplot(am, mpg, data = mtcars, geom = "boxplot", 
-      fill = am, main = "Fuel Performance (in mpg) by Transmission Type",
-      xlab = "Transmission Type", ylab = "Fuel Performance (mpg)") + theme(legend.position = "none")
 ```
 
-##### **Figure 1: Regression Equation of Fuel Performance by Transmission Type**
+##### **Figure 1**
 ```{r mtcars}
 summary(lm(mpg ~ factor(am), data = mtcars))
 ```
